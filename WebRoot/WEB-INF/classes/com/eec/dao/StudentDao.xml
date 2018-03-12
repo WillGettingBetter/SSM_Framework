@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eec.dao.StudentDao">
+	<!-- 获取所有学生信息 -->
+	<select id="getAll" resultType="com.eec.entity.Student">
+		select * from student
+	</select>
+
+	<!-- 删除一条学生信息 -->
+	<delete id="deleteStu" parameterType="int">
+		delete from student where
+		stuid=#{value}
+	</delete>
+
+	<!-- 插入一条学生信息 -->
+	<insert id="insertStu" parameterType="com.eec.entity.Student">
+		insert into
+		student(stuname,stuage,stubirth)
+		values(#{stuname},#{stuage},#{stubirth})
+	</insert>
+
+	<!-- 查询到学生信息 -->
+	<select id="getStuById" parameterType="int" resultType="com.eec.entity.Student">
+		select *
+		from student where stuid=#{value}
+	</select>
+
+	<!-- 根据学生对象修改学生信息 -->
+	<update id="updateStuByObject" parameterType="com.eec.entity.Student">
+		update student set
+		stuname=#{stuname},stuage=#{stuage},stubirth=#{stubirth}
+		where
+		stuid=#{stuid}
+	</update>
+</mapper>
